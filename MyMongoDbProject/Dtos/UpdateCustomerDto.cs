@@ -1,6 +1,6 @@
-﻿namespace MyMongoDbProject.Entites
+﻿namespace MyMongoDbProject.Dtos
 {
-    public class Customer
+    public class UpdateCustomerDto
     {
         public string CustomerId { get; set; }
         public string CustomerName { get; set; }

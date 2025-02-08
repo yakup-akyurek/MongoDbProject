@@ -1,8 +1,8 @@
-﻿namespace MyMongoDbProject.Entites
+﻿namespace MyMongoDbProject.Dtos
 {
-    public class Customer
+    public class CreateCustomerDto
     {
-        public string CustomerId { get; set; }
+        
         public string CustomerName { get; set; }
         public string CustomerSurname { get; set; }
         public decimal CustomerBalance { get; set; }

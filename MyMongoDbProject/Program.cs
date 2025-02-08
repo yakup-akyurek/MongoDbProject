@@ -1,6 +1,22 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using MyMongoDbProject.Services;
+using MyMongoDbProject.Settings;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
+
+builder.Services.AddScoped<IDatabaseSettings>(sp=> { return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value; });
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
